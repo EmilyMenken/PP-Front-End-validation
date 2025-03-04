@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <!-- Page title -->
+    <title>Mini-Blog</title>
+
+    <!--Favicon  -->
+
+    <link rel="icon" type="image/webp" href="/pictures/icon.webp">
+
+    <!-- Linked stylesheet -->
+    <link rel="stylesheet" href="/styles/styles.css">
+    
+</head>
+<body>
+    <form action="/submit" method="post">
+    <h1> Create a New Post </h1>
+        <fieldset>
+           <input type = "text" maxlength="255" name="author" placeholder="Your name"> 
+            <input type = "text" maxlength="255" name="title"placeholder="Title of your Post">
+            <textarea maxlength="500" name="content" placeholder="Content of your post..."></textarea>
+            
+            <button type="submit">Submit</button>
+        </fieldset>   
+    </form>
+</body>
+</html>
