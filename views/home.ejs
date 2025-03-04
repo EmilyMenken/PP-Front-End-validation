@@ -20,12 +20,14 @@
     <h1> Create a New Post </h1>
         <fieldset>
 
-     <input type = "text" maxlength="255" name="author" placeholder="Your name" id="author" class="err"> 
-           <span id="err-author">enter author</span>
-            <input type = "text" maxlength="255" name="title"placeholder="Title of your Post" id="title" class="err-email">
-            <span id="err-title">enter title</span>
-            <textarea maxlength="500" name="content" placeholder="Content of your post..." id="content" class="err"></textarea>
-            <span id="err-content">enter content</span>
+     <input type = "text" maxlength="255" name="author" placeholder="Your name" id="author"> 
+           <span id="err-author" class="err">enter author</span>
+
+            <input type = "text" maxlength="255" name="title"placeholder="Title of your Post" id="title">
+            <span id="err-title" class="err">enter title</span>
+            
+            <textarea maxlength="500" name="content" placeholder="Content of your post..." id="content"></textarea>
+            <span id="err-content" class="err">enter content</span>
 
             
             <button type="submit">Submit</button>
