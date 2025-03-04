@@ -16,12 +16,15 @@
     
 </head>
 <body>
-    <form action="/submit" method="post">
+    <form action="/submit" method="post" id="blog">
     <h1> Create a New Post </h1>
         <fieldset>
-           <input type = "text" maxlength="255" name="author" placeholder="Your name"> 
-            <input type = "text" maxlength="255" name="title"placeholder="Title of your Post">
-            <textarea maxlength="500" name="content" placeholder="Content of your post..."></textarea>
+           <input type = "text" maxlength="255" name="author" placeholder="Your name" id="author" class="err"> 
+           <span id="err-author">enter author</span>
+            <input type = "text" maxlength="255" name="title"placeholder="Title of your Post" id="title" class="err-email">
+            <span id="err-title">enter title</span>
+            <textarea maxlength="500" name="content" placeholder="Content of your post..." id="content" class="err"></textarea>
+            <span id="err-content">enter content</span>
             
             <button type="submit">Submit</button>
         </fieldset>   
