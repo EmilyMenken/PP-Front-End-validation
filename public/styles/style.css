@@ -96,3 +96,10 @@ html{
     a {
         color: green;
       }
+
+.err{
+
+color:red;
+display: none;
+
+}
