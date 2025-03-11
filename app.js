@@ -33,8 +33,9 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-    res.render('home');
+    res.render('home', { errors: [] }); // stops the error that shuts down the page if there are no errors
 });
+
 
 app.get('/entries', async (req, res) => {
     const conn = await connect();
@@ -43,7 +44,7 @@ app.get('/entries', async (req, res) => {
 
     console.log(entries);
 
-    res.render('entries', {entries});
+    res.render('entries', { entries });
 });
 
 app.post('/submit', async (req, res) => {
@@ -53,18 +54,39 @@ app.post('/submit', async (req, res) => {
         content: req.body.content
     }
 
-    console.log(newPost);
+    const errors = [];
 
-    const conn = await connect();
+    // Validate author
+    if (!newPost.author || /\d/.test(newPost.author)) {
+        errors.push("Author name is required and cannot contain numbers.");
+    }
 
-    const insertQuery = await conn.query(`INSERT INTO posts
-        (author, title, content)
-        values (?, ?, ?)`,
-        [ newPost.author, newPost.title, newPost.content ]
-    );
-        
-    res.render('confirmation', { post: newPost });
+    // Validate title
+    if (!newPost.title) {
+        errors.push("Title is required.");
+    }
+
+    // Validate content
+    if (!newPost.content) {
+        errors.push("Content is required.");
+    }
+
+    if (errors.length > 0) {
+        res.render('home', { errors: errors });
+    } else {
+        const conn = await connect();
+        const insertQuery = await conn.query(`INSERT INTO posts
+            (author, title, content)
+            values (?, ?, ?)`,
+            [newPost.author, newPost.title, newPost.content]
+        );
+
+        res.render('confirmation', { post: newPost });
+    }
 });
+
+
+// console.log(newPost);
 
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${3000}`);

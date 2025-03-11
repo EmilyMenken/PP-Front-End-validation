@@ -1,40 +1,58 @@
-document.getElementById('blog').onsubmit = () => 
-    {
-        clearErrors();
-        let isValid = true;
-    
-        //Validate first name
-        let author = document.getElementById('author').value.trim();
-        let title = document.getElementById('title').value.trim();
-        let content = document.getElementById('content').value.trim();
-    
-    
-        if(author === "")
-        {
-            document.getElementById("err-author").style.display = "block";
-            isValid = false;
-        }
-        if(title === "")
-        {
-            document.getElementById("err-title").style.display = "block";
-            isValid = false;
-        }
-        if(content === "")
-        {
-            document.getElementById("err-content").style.display = "block";
-            isValid = false;
-        }
-    
-        return isValid;
-    }
-    
-    function clearErrors()
-    {
-        let errors = document.getElementsByClassName("err");
-        for(let i = 0;  i < errors.length; i++)
-        {
-            errors[i].style.display = "none";
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const authorInput = document.getElementById("author");
+    const titleInput = document.getElementById("title");
+    const contentInput = document.getElementById("content");
+
+    const authorError = document.getElementById("err-author");
+    const titleError = document.getElementById("err-title");
+    const contentError = document.getElementById("err-content");
+
+    function validateAuthor() {
+        if (!authorInput.value || /\d/.test(authorInput.value)) {
+            authorError.style.display = "inline";  // Show error
+            return false;
+        } else {
+            authorError.style.display = "none";  // Hide error
+            return true;
         }
     }
-    
-    
+
+    function validateTitle() {
+        if (!titleInput.value) {
+            titleError.style.display = "inline";  // Show error
+            return false;
+        } else {
+            titleError.style.display = "none";  // Hide error
+            return true;
+        }
+    }
+
+    function validateContent() {
+        if (!contentInput.value) {
+            contentError.style.display = "inline";  // Show error
+            return false;
+        } else {
+            contentError.style.display = "none";  // Hide error
+            return true;
+        }
+    }
+
+    authorInput.addEventListener("input", validateAuthor);
+    titleInput.addEventListener("input", validateTitle);
+    contentInput.addEventListener("input", validateContent);
+
+    const form = document.getElementById("blog");
+    form.addEventListener("submit", function (e) {
+        const isAuthorValid = validateAuthor();
+        const isTitleValid = validateTitle();
+        const isContentValid = validateContent();
+
+        if (!isAuthorValid || !isTitleValid || !isContentValid) {
+            e.preventDefault(); 
+        }
+    });
+
+});

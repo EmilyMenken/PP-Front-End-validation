@@ -3,35 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-    <!-- Page title -->
     <title>Pair Programming 8</title>
 
-    <!--Favicon  -->
-
     <link rel="icon" type="image/webp" href="/pictures/icon.webp">
-
-    <!-- Linked stylesheet -->
     <link rel="stylesheet" href="/styles/style.css">
-    
+    <script src="/scripts/validation.js"></script>
+
+
 </head>
 <body>
+    
     <form action="/submit" method="post" id="blog">
-    <h1> Create a New Post </h1>
+        <h1>Create a New Post</h1>
         <fieldset>
 
-     <input type = "text" maxlength="255" name="author" placeholder="Your name" id="author"> 
-           <span id="err-author" class="err">enter author</span>
+            <input type="text" maxlength="255" name="author" placeholder="Your name" id="author">
+            <span id="err-author" class="err" style="display: none;">Enter author (no numbers allowed)</span>
 
-            <input type = "text" maxlength="255" name="title"placeholder="Title of your Post" id="title">
-            <span id="err-title" class="err">enter title</span>
-            
+            <input type="text" maxlength="255" name="title" placeholder="Title of your Post" id="title">
+            <span id="err-title" class="err" style="display: none;">Enter title</span>
+
             <textarea maxlength="500" name="content" placeholder="Content of your post..." id="content"></textarea>
-            <span id="err-content" class="err">enter content</span>
+            <span id="err-content" class="err" style="display: none;">Enter content</span>
 
-            
             <button type="submit">Submit</button>
-        </fieldset>   
+        </fieldset>
     </form>
+
 </body>
 </html>

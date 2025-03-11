@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mini-Blog Entries</title>
 
-    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="icon" type="image/webp" href="/pictures/icon.webp">
+    <link rel="stylesheet" href="/styles/style.css">
+    <script src="/scripts/validation.js"></script>
+
+
 
 </head>
 <div>
@@ -20,7 +24,7 @@
             <p>Author: <%= entries[i].author %></p>
         <% } %>
     <% } %>
-    <p><a href="/">Create a New Post</a> | <a href="/entries">View Admin Posts</a></p>
+    <p><a href="/"><button>Create a New Post </button></a> <!-- <a href="/entries"><button> View Admin Posts </button></a></p> -->
 </body>
 </div>
 </html>
