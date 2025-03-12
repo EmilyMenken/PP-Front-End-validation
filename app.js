@@ -57,18 +57,21 @@ app.post('/submit', async (req, res) => {
     const errors = [];
 
     // Validate author
-    if (!newPost.author || /\d/.test(newPost.author)) {
+    if (!newPost.author.trim() || /\d/.test(newPost.author.trim())) {
         errors.push("Author name is required and cannot contain numbers.");
     }
 
     // Validate title
-    if (!newPost.title) {
+    if (!newPost.title.trim()) {
         errors.push("Title is required.");
     }
 
+    console.log(typeof(newPost.content));
+    const length = newPost.content.length;
+    console.log(length);
     // Validate content
-    if (!newPost.content) {
-        errors.push("Content is required.");
+    if (!newPost.content.trim() || length <= 10){
+        errors.push("Content is required. Must be ten characters at least.");
     }
 
     if (errors.length > 0) {
@@ -84,6 +87,8 @@ app.post('/submit', async (req, res) => {
         res.render('confirmation', { post: newPost });
     }
 });
+
+
 
 
 // console.log(newPost);
