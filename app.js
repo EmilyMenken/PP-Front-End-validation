@@ -66,10 +66,12 @@ app.post('/submit', async (req, res) => {
         errors.push("Title is required.");
     }
 
-    // Validate content
-    if (!newPost.content) {
-        errors.push("Content is required.");
-    }
+   // Validate content
+   if (!newPost.content) {
+    errors.push("Content is required.");
+} else if (newPost.content.length < 10) { // Ensures content is at least 10 characters
+    errors.push("Content must be at least 10 characters long.");
+}
 
     if (errors.length > 0) {
         res.render('home', { errors: errors });
